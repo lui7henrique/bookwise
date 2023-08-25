@@ -7,15 +7,18 @@ import { RatingStars } from '../RatingStars'
 import { useSession } from 'next-auth/react'
 import { SocialModal } from '../SocialModal'
 import { useCallback, useState } from 'react'
-import { RatingForm } from '../RatingForm'
+import { RatingData, RatingForm } from '../RatingForm'
+import { queryClient } from 'src/pages/_app'
 
 type BookRatingsProps = {
   book: Book
 }
 
 export const BookRatings = ({ book }: BookRatingsProps) => {
+  const queryKey = [book.id]
+
   const { data } = useQuery(
-    [book.id],
+    queryKey,
     async () => await api.getBookRatings(book.id),
   )
 
@@ -27,6 +30,20 @@ export const BookRatings = ({ book }: BookRatingsProps) => {
   const handleCloseRatingForm = useCallback(
     () => setIsShowRatingForm(false),
     [],
+  )
+
+  const handleSubmitRating = useCallback(
+    async (data: RatingData) => {
+      try {
+        await api.createBookRating(book.id, data)
+        queryClient.invalidateQueries(queryKey)
+      } catch {
+        // TODO: HANDLE ERRORS
+      } finally {
+        setIsShowRatingForm(false)
+      }
+    },
+    [book.id],
   )
 
   const RightAction = useCallback(() => {
@@ -72,7 +89,7 @@ export const BookRatings = ({ book }: BookRatingsProps) => {
         {isShowRatingForm && (
           <RatingForm
             onCancel={handleCloseRatingForm}
-            onSubmit={async (data) => await api.createBookRate(book.id, data)}
+            onSubmit={handleSubmitRating}
           />
         )}
 

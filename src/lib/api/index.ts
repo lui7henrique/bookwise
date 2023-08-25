@@ -49,8 +49,8 @@ export const api = {
     const { data } = await url.get<Ratings>(`/ratings/${bookId}`)
     return data
   },
-  createBookRate: async (bookId: string, ratingData: RatingData) => {
-    const { data } = await url.post(`/books/${bookId}/rate`, ratingData)
+  createBookRating: async (bookId: string, ratingData: RatingData) => {
+    const { data } = await url.post(`/books/${bookId}/rating`, ratingData)
 
     return data
   },

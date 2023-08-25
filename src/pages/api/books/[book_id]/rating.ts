@@ -21,7 +21,8 @@ export default async function handler(
   }
 
   try {
-    const bookId = String(req.query.bookId)
+    const bookId = String(req.query.book_id)
+
     const userId = String(session?.user?.id!)
 
     const bodySchema = z.object({
@@ -31,18 +32,18 @@ export default async function handler(
 
     const { description, rate } = bodySchema.parse(req.body)
 
-    const userAlreadyRated = await prisma.rating.findFirst({
-      where: {
-        user_id: userId,
-        book_id: bookId,
-      },
-    })
+    // const userAlreadyRated = await prisma.rating.findFirst({
+    //   where: {
+    //     user_id: userId,
+    //     book_id: bookId,
+    //   },
+    // })
 
-    if (userAlreadyRated) {
-      return res.status(400).json({
-        error: 'You already rated this book',
-      })
-    }
+    // if (userAlreadyRated) {
+    //   return res.status(400).json({
+    //     error: 'You already rated this book',
+    //   })
+    // }
 
     await prisma.rating.create({
       data: {

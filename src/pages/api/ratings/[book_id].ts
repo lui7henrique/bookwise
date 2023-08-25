@@ -1,15 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { z } from 'zod'
-import { getServerSession } from 'next-auth'
 import { prisma } from 'src/lib/prisma'
-import { buildNextAuthOptions } from '../auth/[...nextauth]'
-
-const createRatingBody = z.object({
-  description: z.string(),
-  book_id: z.string(),
-  user_id: z.string(),
-  rate: z.number(),
-})
 
 export default async function handler(
   req: NextApiRequest,
@@ -42,6 +32,9 @@ export default async function handler(
           name: true,
         },
       },
+    },
+    orderBy: {
+      created_at: 'desc',
     },
   })
 
