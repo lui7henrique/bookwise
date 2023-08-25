@@ -8,10 +8,12 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  name       String
-  avatar_url String?
-  created_at DateTime @default(now())
+  id            String    @id @default(uuid())
+  name          String
+  avatar_url    String?
+  created_at    DateTime  @default(now())
+  email         String?   @unique
+  emailVerified DateTime?
 
   accounts Account[]
   sessions Session[]
@@ -90,10 +92,11 @@ model Account {
 
 model Session {
   id            String   @id @default(cuid())
-  session_token String
+  session_token String   @unique
   user_id       String
   expires       DateTime
   user          User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
+  @@index([user_id])
   @@map("sessions")
 }

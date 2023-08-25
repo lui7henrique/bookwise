@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/react'
 import { SignInButton } from './SignInButton'
 import { ProfileButton } from './ProfileButton'
 
-export const Sidebar = () => {
+const Sidebar = () => {
   const { status } = useSession()
   const { asPath } = useRouter()
 
@@ -56,13 +56,12 @@ export const Sidebar = () => {
         <nav className="mt-16 flex flex-col gap-6 px-3">
           {navigation.map((item) => {
             const { href, icon: Icon, label } = item
-
             const isActive = asPath === href
 
             return (
               <div key={href} className="flex">
                 {isActive && (
-                  <div className="h-6 w-1 -translate-x-4 rounded-full bg-red-600 bg-gradient-vertical transition-all" />
+                  <div className="h-6 w-1 -translate-x-4 rounded-full bg-red-500 bg-gradient-vertical transition-all" />
                 )}
 
                 <Link
@@ -91,3 +90,5 @@ export const Sidebar = () => {
     </aside>
   )
 }
+
+export default Sidebar

@@ -2,30 +2,48 @@ import { Star } from '@phosphor-icons/react'
 
 type RatingStarsProps = {
   ratingAverage: number
+  onSelect?: (value: number) => void
 }
 
-export const RatingStars = ({ ratingAverage }: RatingStarsProps) => {
+export const RatingStars = ({ ratingAverage, onSelect }: RatingStarsProps) => {
+  if (onSelect) {
+    return (
+      <div className="grid grid-cols-5 gap-1">
+        {Array.from({ length: 5 }).map((_, index) => {
+          const rating = index + 1
+          const isEmpty = rating > ratingAverage
+
+          return (
+            <Star
+              width={24}
+              height={24}
+              key={index}
+              weight={isEmpty ? 'regular' : 'fill'}
+              className="cursor-pointer fill-purple-100"
+              onClick={() => onSelect(rating)}
+            />
+          )
+        })}
+      </div>
+    )
+  }
+
   return (
     <div className="grid grid-cols-5 gap-1">
-      {Array.from({ length: ratingAverage }).map((_, index) => (
-        <Star
-          width={16}
-          height={16}
-          key={index}
-          weight="fill"
-          className="fill-purple-100"
-        />
-      ))}
+      {Array.from({ length: 5 }).map((_, index) => {
+        const rating = index + 1
+        const isEmpty = rating > ratingAverage
 
-      {Array.from({ length: 5 - ratingAverage }).map((_, index) => (
-        <Star
-          width={16}
-          height={16}
-          key={index}
-          weight="regular"
-          className="fill-purple-100"
-        />
-      ))}
+        return (
+          <Star
+            width={16}
+            height={16}
+            key={index}
+            weight={isEmpty ? 'regular' : 'fill'}
+            className="cursor-pointer fill-purple-100"
+          />
+        )
+      })}
     </div>
   )
 }

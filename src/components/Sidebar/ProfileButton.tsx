@@ -5,7 +5,7 @@ import Image from 'next/image'
 export const ProfileButton = () => {
   const { data } = useSession()
 
-  if (!data?.user?.image || !data.user.name) {
+  if (!data?.user) {
     return <></>
   }
 
@@ -13,7 +13,7 @@ export const ProfileButton = () => {
     <div className="flex items-center gap-3">
       <figure className="relative flex h-[34px] w-[34px] items-center justify-center rounded-full bg-gradient-vertical">
         <Image
-          src={data.user.image}
+          src={data.user.avatar_url}
           width={32}
           height={32}
           alt={data.user.name}
