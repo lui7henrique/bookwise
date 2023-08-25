@@ -5,6 +5,7 @@ import {
   User,
 } from '@prisma/client'
 import axios from 'axios'
+import { RatingData } from 'src/components/RatingForm'
 
 const url = axios.create({
   baseURL: '/api',
@@ -46,6 +47,11 @@ export const api = {
   },
   getBookRatings: async (bookId: string) => {
     const { data } = await url.get<Ratings>(`/ratings/${bookId}`)
+    return data
+  },
+  createBookRate: async (bookId: string, ratingData: RatingData) => {
+    const { data } = await url.post(`/books/${bookId}/rate`, ratingData)
+
     return data
   },
 }

@@ -72,7 +72,7 @@ export const BookRatings = ({ book }: BookRatingsProps) => {
         {isShowRatingForm && (
           <RatingForm
             onCancel={handleCloseRatingForm}
-            onSubmit={(data) => console.log(data)}
+            onSubmit={async (data) => await api.createBookRate(book.id, data)}
           />
         )}
 

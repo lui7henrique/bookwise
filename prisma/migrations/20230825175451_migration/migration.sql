@@ -3,14 +3,15 @@ CREATE TABLE "users" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
     "avatar_url" TEXT,
-    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "email" TEXT,
+    "emailVerified" DATETIME
 );
 
 -- CreateTable
 CREATE TABLE "books" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "username" TEXT NOT NULL,
     "author" TEXT NOT NULL,
     "summary" TEXT NOT NULL,
     "cover_url" TEXT NOT NULL,
@@ -73,10 +74,31 @@ CREATE TABLE "sessions" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "books_username_key" ON "books"("username");
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "categories_name_key" ON "categories"("name");
 
 -- CreateIndex
+CREATE INDEX "CategoriesOnBooks_book_id_idx" ON "CategoriesOnBooks"("book_id");
+
+-- CreateIndex
+CREATE INDEX "CategoriesOnBooks_categoryId_idx" ON "CategoriesOnBooks"("categoryId");
+
+-- CreateIndex
+CREATE INDEX "ratings_book_id_idx" ON "ratings"("book_id");
+
+-- CreateIndex
+CREATE INDEX "ratings_user_id_idx" ON "ratings"("user_id");
+
+-- CreateIndex
+CREATE INDEX "accounts_user_id_idx" ON "accounts"("user_id");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "accounts_provider_provider_account_id_key" ON "accounts"("provider", "provider_account_id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "sessions_session_token_key" ON "sessions"("session_token");
+
+-- CreateIndex
+CREATE INDEX "sessions_user_id_idx" ON "sessions"("user_id");

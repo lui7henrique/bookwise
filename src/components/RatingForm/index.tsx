@@ -4,8 +4,8 @@ import { RatingStars } from '../RatingStars'
 import { FormEvent, useCallback, useState } from 'react'
 import { Check, X } from '@phosphor-icons/react'
 
-type RatingData = {
-  rating: number
+export type RatingData = {
+  rate: number
   description: string
 }
 
@@ -17,21 +17,21 @@ type RatingFormProps = {
 export const RatingForm = ({ onCancel, onSubmit }: RatingFormProps) => {
   const { data } = useSession()
 
-  const [rating, setRating] = useState(0)
-  const [ratingDescription, setRatingDescription] = useState('')
+  const [rate, setRate] = useState(0)
+  const [description, setDescription] = useState('')
 
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
 
       const data: RatingData = {
-        description: ratingDescription,
-        rating,
+        description,
+        rate,
       }
 
       onSubmit(data)
     },
-    [onSubmit, rating, ratingDescription],
+    [onSubmit, rate, description],
   )
 
   if (!data) {
@@ -60,8 +60,8 @@ export const RatingForm = ({ onCancel, onSubmit }: RatingFormProps) => {
           <h6 className="font-bold">{data.user?.name}</h6>
 
           <RatingStars
-            ratingAverage={rating}
-            onSelect={(value) => setRating(value)}
+            ratingAverage={rate}
+            onSelect={(value) => setRate(value)}
           />
         </div>
       </div>
@@ -75,11 +75,12 @@ export const RatingForm = ({ onCancel, onSubmit }: RatingFormProps) => {
           placeholder="Escreva sua avaliação"
           className="h-full w-full bg-transparent px-[20px] py-[14px] text-sm outline-none"
           style={{ resize: 'none' }}
-          onChange={(event) => setRatingDescription(event.target.value)}
+          onChange={(event) => setDescription(event.target.value)}
+          maxLength={450}
         />
 
         <span className="absolute bottom-2 right-2 text-xs text-gray-400">
-          {ratingDescription.length}/450
+          {description.length}/450
         </span>
       </div>
 
@@ -93,7 +94,7 @@ export const RatingForm = ({ onCancel, onSubmit }: RatingFormProps) => {
 
         <button
           className="rounded-md bg-gray-600 p-2 disabled:cursor-not-allowed disabled:opacity-60"
-          disabled={rating === 0 || ratingDescription === ''}
+          disabled={rate === 0 || description === ''}
         >
           <Check className="fill-green-100" />
         </button>
