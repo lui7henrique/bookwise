@@ -1,44 +1,47 @@
-import { Rating } from '@prisma/client'
 import Image from 'next/image'
 import { Star } from '@phosphor-icons/react'
+import { LatestRating } from 'src/lib/api'
+import { formatThumbnail } from 'src/utils/formatThumbnail'
+import { RatingStars } from '../RatingStars'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
 type RatingCardProps = {
-  rating?: Rating
+  rating: LatestRating
 }
 
 export const RatingCard = (props: RatingCardProps) => {
-  console.log({ props })
+  const {
+    rating: { book, description, user, rate, created_at: createdAt },
+  } = props
+
+  const thumbnail = formatThumbnail(book.cover_url)
 
   return (
     <div className="flex w-full flex-col gap-6 rounded-lg border-2 border-transparent bg-gray-700 p-6 transition-all hover:border-gray-600">
       <div className="flex w-full justify-between">
         <div className="flex gap-4">
           <figure className="relative h-12 w-12 overflow-hidden rounded-full border border-gray-500">
-            <Image src="https://picsum.photos/id/1/200/200?men" fill alt="" />
+            <Image src={user.avatar_url!} fill alt="" />
           </figure>
 
           <div>
-            <h5 className="text-gray-100">Jaxson Dias</h5>
-            <h6 className="text-gray-400">Hoje</h6>
+            <h5 className="text-gray-100">{user.name}</h5>
+            <h6 className="text-gray-400">
+              Há{' '}
+              {formatDistanceToNow(new Date(createdAt), {
+                locale: ptBR,
+              })}
+            </h6>
           </div>
         </div>
 
-        <div className="grid grid-cols-5 gap-1">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Star
-              width={16}
-              height={16}
-              key={index}
-              weight="fill"
-              className="fill-purple-100"
-            />
-          ))}
-        </div>
+        <RatingStars ratingAverage={rate} />
       </div>
 
       <div className="flex gap-5">
         <Image
-          src="/images/books/entendendo-algoritmos.png"
+          src={thumbnail}
           width={108}
           height={152}
           alt=""
@@ -48,14 +51,11 @@ export const RatingCard = (props: RatingCardProps) => {
 
         <div className="flex w-full flex-col justify-between">
           <div>
-            <h5 className="font-bold text-gray-100">Entendendo Algoritmos</h5>
-            <h6 className="mt-0 text-sm text-gray-400">Aditya Bhargava</h6>
+            <h5 className="font-bold text-gray-100">{book.name}</h5>
+            <h6 className="mt-0 text-sm text-gray-400">{book.author}</h6>
           </div>
 
-          <p className="mt-5 text-sm text-gray-300">
-            Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis.
-            Penatibus id vestibulum imperdiet a at imperdiet lectu...
-          </p>
+          <p className="mt-5 text-sm text-gray-300">{description}</p>
         </div>
       </div>
     </div>

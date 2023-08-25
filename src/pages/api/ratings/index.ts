@@ -27,6 +27,7 @@ export default async function handler(
     orderBy: {
       created_at: 'desc',
     },
+    take: 3,
   })
 
   return res.status(200).json(rawRatings)

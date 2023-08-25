@@ -11,6 +11,7 @@ const url = axios.create({
   baseURL: '/api',
 })
 
+// TODO: REFACTOR THIS
 export type Book = {
   ratingsAverage: number
   ratingsCount: number
@@ -25,6 +26,16 @@ export type Rating = {
 } & PrismaRating
 
 type Ratings = Array<Rating>
+
+export type LatestRating = Rating & {
+  book: PrismaBook
+}
+
+type LatestRatings = Array<LatestRating>
+
+export type Read = PrismaRating & {
+  book: PrismaBook
+}
 
 export const api = {
   getCategories: async () => {
@@ -47,6 +58,15 @@ export const api = {
   },
   getBookRatings: async (bookId: string) => {
     const { data } = await url.get<Ratings>(`/ratings/${bookId}`)
+    return data
+  },
+  getLatestRatings: async () => {
+    const { data } = await url.get<LatestRatings>(`/ratings`)
+    return data
+  },
+  getLastRead: async () => {
+    const { data } = await url.get<Read>('/last-read')
+
     return data
   },
   createBookRating: async (bookId: string, ratingData: RatingData) => {

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Book } from 'src/lib/api'
 import { ComponentProps } from 'react'
 import { RatingStars } from '../RatingStars'
+import { formatThumbnail } from 'src/utils/formatThumbnail'
 
 type BookCardProps = {
   book: Book
@@ -13,9 +14,7 @@ export const BookCard = (props: BookCardProps) => {
     ...divProps
   } = props
 
-  const thumbnail = cover?.startsWith('public/')
-    ? cover.replace('public/', '/')
-    : cover
+  const thumbnail = formatThumbnail(cover)
 
   return (
     <div

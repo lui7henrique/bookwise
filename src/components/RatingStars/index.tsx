@@ -40,7 +40,7 @@ export const RatingStars = ({ ratingAverage, onSelect }: RatingStarsProps) => {
             height={16}
             key={index}
             weight={isEmpty ? 'regular' : 'fill'}
-            className="cursor-pointer fill-purple-100"
+            className=" fill-purple-100"
           />
         )
       })}

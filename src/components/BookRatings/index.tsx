@@ -37,6 +37,8 @@ export const BookRatings = ({ book }: BookRatingsProps) => {
       try {
         await api.createBookRating(book.id, data)
         queryClient.invalidateQueries(queryKey)
+
+        queryClient.invalidateQueries(['last-read'])
       } catch {
         // TODO: HANDLE ERRORS
       } finally {

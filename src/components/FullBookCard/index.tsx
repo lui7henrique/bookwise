@@ -1,6 +1,7 @@
 import { BookOpen, BookmarkSimple, Star } from '@phosphor-icons/react'
 import Image from 'next/image'
 import { Book } from 'src/lib/api'
+import { formatThumbnail } from 'src/utils/formatThumbnail'
 
 type FullBookCardProps = {
   book: Book
@@ -19,9 +20,7 @@ export const FullBookCard = (props: FullBookCardProps) => {
     categories,
   } = book
 
-  const thumbnail = cover.startsWith('public/')
-    ? cover.replace('public/', '/')
-    : cover
+  const thumbnail = formatThumbnail(cover)
 
   return (
     <section className="mt-4 rounded-[10px] bg-gray-700 px-8 py-6 ">

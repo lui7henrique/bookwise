@@ -14,7 +14,7 @@ export const PopularBooks = () => {
 
         <Link
           className="flex items-center gap-2 text-purple-100"
-          href="/profile"
+          href="/explore"
         >
           Ver todos <CaretRight className="fill-purple-100" weight="bold" />
         </Link>
