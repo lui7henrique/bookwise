@@ -2,7 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['picsum.photos'],
+    domains: [
+      'picsum.photos',
+      'avatars.githubusercontent.com',
+      'images.unsplash.com',
+      'lh3.googleusercontent.com',
+    ],
   },
   async redirects() {
     return [

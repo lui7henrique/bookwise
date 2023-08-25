@@ -7,6 +7,8 @@ type RatingCardProps = {
 }
 
 export const RatingCard = (props: RatingCardProps) => {
+  console.log({ props })
+
   return (
     <div className="flex w-full flex-col gap-6 rounded-lg border-2 border-transparent bg-gray-700 p-6 transition-all hover:border-gray-600">
       <div className="flex w-full justify-between">

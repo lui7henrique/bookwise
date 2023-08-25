@@ -1,17 +1,27 @@
 import Image from 'next/image'
+import { signIn } from 'next-auth/react'
+import { BuiltInProviderType } from 'next-auth/providers'
 import { useRouter } from 'next/router'
+
+export type LoginProvider = {
+  logo: string
+  label: string
+  provider?: BuiltInProviderType
+}
 
 export default function Login() {
   const { push } = useRouter()
 
-  const providers = [
+  const providers: LoginProvider[] = [
     {
       logo: 'google.svg',
       label: 'Entrar com Google',
+      provider: 'google',
     },
     {
       logo: 'github.svg',
       label: 'Entrar com GitHub',
+      provider: 'github',
     },
     {
       logo: 'rocket.svg',
@@ -54,7 +64,15 @@ export default function Login() {
                 <button
                   className="flex cursor-pointer items-center justify-start gap-5 rounded-lg bg-gray-600 px-6 py-5 font-bold text-gray-200 transition-all hover:bg-gray-700"
                   key={label}
-                  onClick={() => push('/app')}
+                  onClick={() => {
+                    if (provider.provider) {
+                      return signIn(provider.provider, {
+                        callbackUrl: '/app',
+                      })
+                    }
+
+                    return push('/app')
+                  }}
                 >
                   <Image
                     src={`/images/logos/${logo}`}

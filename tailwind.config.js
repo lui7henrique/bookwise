@@ -8,6 +8,9 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    maxWidth: {
+      container: '996px',
+    },
     colors: {
       ...colors,
 
@@ -41,6 +44,25 @@ module.exports = {
         'gradient-vertical': `linear-gradient(180deg, #7FD1CC 0%, #9694F5 100%)`,
         'gradient-horizontal': `linear-gradient(90deg, #7FD1CC 0%, #9694F5 100%)`,
       },
+    },
+    keyframes: {
+      overlayShow: {
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+      },
+      contentShow: {
+        from: { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
+        to: { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+      },
+      openDrawer: {
+        from: { transform: 'translateX(100%)' },
+        to: { transform: 'translateX(0%)' },
+      },
+    },
+    animation: {
+      overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+      contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+      openDrawer: 'openDrawer 450ms cubic-bezier(0.16, 1, 0.3, 1)',
     },
   },
   plugins: [],
