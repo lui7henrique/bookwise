@@ -37,6 +37,11 @@ export type Read = PrismaRating & {
   book: PrismaBook
 }
 
+type Profile = {
+  user: User
+  ratings: PrismaRating[]
+}
+
 export const api = {
   getCategories: async () => {
     const { data } = await url.get<{ categories: Category[] }>('/categories')
@@ -71,6 +76,11 @@ export const api = {
   },
   createBookRating: async (bookId: string, ratingData: RatingData) => {
     const { data } = await url.post(`/books/${bookId}/rating`, ratingData)
+
+    return data
+  },
+  getProfile: async (userId: string) => {
+    const { data } = await url.get<Profile>(`/profile/${userId}`)
 
     return data
   },

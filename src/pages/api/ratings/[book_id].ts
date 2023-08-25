@@ -33,9 +33,6 @@ export default async function handler(
         },
       },
     },
-    orderBy: {
-      created_at: 'desc',
-    },
   })
 
   return res.status(200).json(rating)

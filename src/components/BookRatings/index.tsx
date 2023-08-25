@@ -41,6 +41,7 @@ export const BookRatings = ({ book }: BookRatingsProps) => {
         queryClient.invalidateQueries(['last-read'])
       } catch {
         // TODO: HANDLE ERRORS
+        console.error('usuário já fez o bglh')
       } finally {
         setIsShowRatingForm(false)
       }
