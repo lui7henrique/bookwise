@@ -3,12 +3,9 @@ import { TrendUp } from '@phosphor-icons/react'
 import { LastRead } from 'src/components/LastRead'
 import { MostRecentRatings } from 'src/components/MostRecentViews'
 import { PopularBooks } from 'src/components/PopularBooks'
-import { useSession } from 'next-auth/react'
 import { Layout } from 'src/components/Layout'
 
 export default function App() {
-  const { status } = useSession()
-
   return (
     <Layout.Root>
       <Layout.Sidebar />

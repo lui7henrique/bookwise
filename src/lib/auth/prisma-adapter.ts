@@ -21,8 +21,6 @@ export function PrismaAdapter(): Adapter {
         emailVerified: null,
       }
 
-      console.log({ formattedUser })
-
       return formattedUser
     },
 

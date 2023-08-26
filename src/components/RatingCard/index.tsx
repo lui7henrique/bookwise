@@ -94,18 +94,6 @@ export const RatingCardSkeleton = () => {
             <div className="mt-2 h-3 w-full animate-pulse rounded-lg bg-gray-600" />
           </div>
         </div>
-        {/* 
-
-        <div className="flex w-full flex-col justify-between">
-          <div>
-            <h5 className="font-bold text-gray-100">{book.name}</h5>
-            <h6 className="mt-0 text-sm text-gray-400">{book.author}</h6>
-          </div>
-
-          <p className="mt-5 line-clamp-3 text-sm text-gray-300">
-            {description}
-          </p>
-        </div> */}
       </div>
     </div>
   )
