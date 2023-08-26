@@ -1,14 +1,10 @@
 import { User } from '@phosphor-icons/react'
 
-import { LastRead } from 'src/components/LastRead'
-import { MostRecentRatings } from 'src/components/MostRecentViews'
-import { useSession } from 'next-auth/react'
 import { Layout } from 'src/components/Layout'
 import { Profile } from 'src/components/Profile'
+import { ProfileBooks } from 'src/components/ProfileBooks'
 
 export default function ProfilePage() {
-  const { status } = useSession()
-
   return (
     <Layout.Root>
       <Layout.Sidebar />
@@ -21,8 +17,7 @@ export default function ProfilePage() {
 
         <div className="flex gap-16">
           <div className="flex w-full max-w-[560px] flex-col gap-10">
-            {status === 'authenticated' && <LastRead />}
-            <MostRecentRatings />
+            <ProfileBooks />
           </div>
 
           <div className=" w-full max-w-[324px]  ">

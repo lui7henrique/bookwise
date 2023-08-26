@@ -39,7 +39,17 @@ export type Read = PrismaRating & {
 
 type Profile = {
   user: User
-  ratings: PrismaRating[]
+  ratings: Array<
+    {
+      book: PrismaBook & {
+        categories: Array<{
+          id: string
+          bookId: string
+          category: Category
+        }>
+      }
+    } & PrismaRating
+  >
 }
 
 export const api = {
