@@ -62,3 +62,51 @@ export const RatingCard = (props: RatingCardProps) => {
     </div>
   )
 }
+
+export const RatingCardSkeleton = () => {
+  return (
+    <div className="flex w-full flex-col gap-6 rounded-lg border-2 border-transparent bg-gray-700 p-6 transition-all">
+      <div className="flex w-full justify-between">
+        <div className="flex gap-4">
+          <figure className="relative h-12 w-12 animate-pulse overflow-hidden rounded-full border border-gray-500 bg-gray-600" />
+
+          <div className="">
+            <div className="h-4 w-32 animate-pulse rounded-lg bg-gray-600" />
+
+            <div className="mt-2 h-3 w-24 animate-pulse rounded-lg bg-gray-600" />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex w-full gap-5">
+        <figure className=" relative h-[152px] w-[30%] animate-pulse overflow-hidden rounded-md  bg-gray-600" />
+
+        <div className="flex w-full flex-col justify-between">
+          <div>
+            <div className="mt-2 h-4 w-[50%] animate-pulse rounded-lg bg-gray-600" />
+
+            <div className="mt-2 h-3 w-[30%] animate-pulse rounded-lg bg-gray-600" />
+          </div>
+
+          <div>
+            <div className="mt-2 h-3 w-full animate-pulse rounded-lg bg-gray-600" />
+            <div className="mt-2 h-3 w-full animate-pulse rounded-lg bg-gray-600" />
+            <div className="mt-2 h-3 w-full animate-pulse rounded-lg bg-gray-600" />
+          </div>
+        </div>
+        {/* 
+
+        <div className="flex w-full flex-col justify-between">
+          <div>
+            <h5 className="font-bold text-gray-100">{book.name}</h5>
+            <h6 className="mt-0 text-sm text-gray-400">{book.author}</h6>
+          </div>
+
+          <p className="mt-5 line-clamp-3 text-sm text-gray-300">
+            {description}
+          </p>
+        </div> */}
+      </div>
+    </div>
+  )
+}

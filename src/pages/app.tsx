@@ -21,7 +21,7 @@ export default function App() {
 
         <div className="flex gap-16">
           <div className="flex w-full max-w-[560px] flex-col gap-10">
-            {status === 'authenticated' && <LastRead />}
+            <LastRead />
             <MostRecentRatings />
           </div>
 

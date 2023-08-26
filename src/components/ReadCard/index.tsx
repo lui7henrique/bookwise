@@ -54,7 +54,7 @@ export const ReadCard = (props: ReadCardProps) => {
 export const ReadCardSkeleton = () => {
   return (
     <div className="flex w-full gap-6 rounded-lg border-2 border-transparent bg-gray-600 p-6 transition-all hover:border-gray-500">
-      <div className="animate-pulse h-[152px] w-[108px] rounded-md bg-gray-700" />
+      <div className="animate-pulse h-[152px] w-[28%] rounded-md bg-gray-700" />
 
       <div className="flex w-full flex-col justify-between">
         <div>
