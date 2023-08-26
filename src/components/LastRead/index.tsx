@@ -7,7 +7,6 @@ import { api } from 'src/lib/api'
 export const LastRead = () => {
   const { data } = useQuery(['last-read'], async () => await api.getLastRead())
 
-  console.log({ data })
   if (!data) {
     // TODO: SKELETON
     return <></>
