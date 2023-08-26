@@ -1,11 +1,34 @@
 import { CaretRight } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useQuery } from 'react-query'
-import { BookCard } from '../BookCard'
+import { BookCard, BookCardSkeleton } from '../BookCard'
 import { api } from 'src/lib/api'
 
 export const PopularBooks = () => {
-  const { data } = useQuery(['books'], async () => await api.getBooks([]))
+  const { data, isLoading } = useQuery(
+    ['books'],
+    async () => await api.getBooks([]),
+  )
+
+  const List = () => {
+    if (isLoading) {
+      return (
+        <>
+          {Array.from({ length: 5 }).map((_, index) => {
+            return <BookCardSkeleton key={index} />
+          })}
+        </>
+      )
+    }
+
+    return (
+      <>
+        {data
+          ?.slice(0, 5)
+          .map((book) => <BookCard key={book.id} book={book} />)}
+      </>
+    )
+  }
 
   return (
     <div>
@@ -21,9 +44,7 @@ export const PopularBooks = () => {
       </div>
 
       <div className="mt-4 flex flex-col gap-3">
-        {data
-          ?.slice(0, 5)
-          .map((book) => <BookCard key={book.id} book={book} />)}
+        <List />
       </div>
     </div>
   )

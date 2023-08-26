@@ -42,3 +42,20 @@ export const BookCard = (props: BookCardProps) => {
     </div>
   )
 }
+
+export const BookCardSkeleton = () => {
+  return (
+    <div className="flex w-full cursor-pointer gap-5 rounded-lg border-2 border-transparent bg-gray-700 px-5 py-[18px] transition-all hover:border-gray-600">
+      <div className="aspect-[6/9] w-[40%] animate-pulse rounded-md bg-gray-600" />
+
+      <div className="flex w-[60%] flex-col items-start justify-between">
+        <div className="flex w-full flex-col items-start">
+          <div className="h-4 w-[100%] animate-pulse rounded-lg bg-gray-600" />
+          <div className="mt-2 h-4 w-[80%] animate-pulse rounded-lg bg-gray-600" />
+        </div>
+
+        <div className="mt-2 h-4 w-[80%] animate-pulse rounded-lg bg-gray-600" />
+      </div>
+    </div>
+  )
+}
