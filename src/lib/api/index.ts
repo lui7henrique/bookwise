@@ -37,7 +37,7 @@ export type Read = PrismaRating & {
   book: PrismaBook
 }
 
-type Profile = {
+export type Profile = {
   user: User
   ratings: Array<
     {

@@ -88,10 +88,10 @@ export const RatingCardSkeleton = () => {
             <div className="mt-2 h-3 w-[30%] animate-pulse rounded-lg bg-gray-600" />
           </div>
 
-          <div>
-            <div className="mt-2 h-3 w-full animate-pulse rounded-lg bg-gray-600" />
-            <div className="mt-2 h-3 w-full animate-pulse rounded-lg bg-gray-600" />
-            <div className="mt-2 h-3 w-full animate-pulse rounded-lg bg-gray-600" />
+          <div className="flex flex-col gap-2">
+            <div className="h-3 w-full animate-pulse rounded-lg bg-gray-600" />
+            <div className="h-3 w-full animate-pulse rounded-lg bg-gray-600" />
+            <div className="h-3 w-full animate-pulse rounded-lg bg-gray-600" />
           </div>
         </div>
       </div>

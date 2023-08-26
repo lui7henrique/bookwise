@@ -1,69 +1,49 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {
-  BookOpen,
-  Bookmark,
-  Books,
-  Icon,
-  UserList,
-} from '@phosphor-icons/react'
+import { BookOpen, Bookmark, Books, UserList } from '@phosphor-icons/react'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useQuery } from 'react-query'
 import { api } from 'src/lib/api'
-import { getMostFrequentArrayItem } from 'src/utils/getMostFrequentArrayItem'
+import { getMainCategory } from 'src/utils/getMainCategory'
 
-type ProfileItemProps = {
-  icon: Icon
-  value: number | string
-  label: string
-}
-
-export const ProfileItem = ({ icon: Icon, label, value }: ProfileItemProps) => {
-  return (
-    <div className="flex items-center gap-5">
-      <Icon width={32} height={32} className="fill-green-100" />
-
-      <div>
-        <h6 className="font-bold">{value}</h6>
-        <span className="text-gray-300">{label}</span>
-      </div>
-    </div>
-  )
-}
+import { getReadAuthors } from 'src/utils/getReadAuthors'
+import { getReadBooks } from 'src/utils/getReadBooks'
+import { getReadPages } from 'src/utils/getReadPages'
+import { ProfileItem, ProfileItemSkeleton } from './Item'
 
 export const Profile = () => {
   const { data } = useSession()
 
-  const { data: profile } = useQuery(
+  const { data: profile, isLoading } = useQuery(
     [data?.user.id],
     async () => await api.getProfile(String(data!.user.id)),
   )
 
-  if (!data) {
-    return <></>
+  if (!profile || isLoading || !data) {
+    return (
+      <div className="flex w-full flex-col items-center border-l border-gray-700">
+        <figure className="h-[72px] w-[72px] animate-pulse rounded-full bg-gray-600" />
+
+        <div className="mt-5 h-[18px] w-[50%] animate-pulse rounded-lg bg-gray-600" />
+
+        <div className="mt-2 h-[14px] w-[40%] animate-pulse rounded-lg bg-gray-600" />
+
+        <div className="my-8 h-1  w-8 rounded-full bg-gradient-vertical transition-all" />
+
+        <div className="align-start flex flex-col gap-10 py-5">
+          <ProfileItemSkeleton icon={BookOpen} label="Páginas lidas" />
+          <ProfileItemSkeleton icon={Books} label="Livros avaliados" />
+          <ProfileItemSkeleton icon={UserList} label="Autores lidos" />
+          <ProfileItemSkeleton icon={Bookmark} label="Categoria mais lida" />
+        </div>
+      </div>
+    )
   }
 
-  if (!profile) {
-    // TODO: SKELETON
-    return <></>
-  }
-
-  const readPages = profile.ratings.reduce(
-    (sum, rating) => sum + rating.book.total_pages,
-    0,
-  )
-
-  const readBooks = profile.ratings.map((rating) => rating.book).length || 0
-
-  const readAuthors =
-    profile.ratings.map((rating) => rating.book.author).length || 0
-
-  const categories = profile.ratings
-    .map((rating) => rating.book.categories)
-    .flatMap((category) => category)
-    .map((category) => category.category.name)
-
-  const mainCategory = getMostFrequentArrayItem(categories)
+  const readPages = getReadPages(profile)
+  const readBooks = getReadBooks(profile)
+  const readAuthors = getReadAuthors(profile)
+  const mainCategory = getMainCategory(profile)
 
   return (
     <div className="flex w-full flex-col items-center border-l border-gray-700">

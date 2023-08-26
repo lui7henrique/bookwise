@@ -12,7 +12,7 @@ export default function ProfilePage() {
       <Layout.Container>
         <Layout.Header>
           <Layout.HeaderIcon icon={User} />
-          <Layout.HeaderTitle>Profile</Layout.HeaderTitle>
+          <Layout.HeaderTitle>Perfil</Layout.HeaderTitle>
         </Layout.Header>
 
         <div className="flex gap-16">
