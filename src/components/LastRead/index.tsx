@@ -10,9 +10,23 @@ export const LastRead = () => {
     async () => await api.getLastRead(),
   )
 
-  if (!data) {
-    // TODO: SKELETON
-    return <></>
+  if (isLoading || !data) {
+    return (
+      <div>
+        <div className="mb-5 flex items-center justify-between">
+          <h3 className="text-gray-100">Sua última leitura</h3>
+
+          <Link
+            className="flex items-center gap-2 text-purple-100"
+            href="/profile"
+          >
+            Ver todas <CaretRight className="fill-purple-100" weight="bold" />
+          </Link>
+        </div>
+
+        <ReadCardSkeleton />
+      </div>
+    )
   }
 
   return (
@@ -28,7 +42,7 @@ export const LastRead = () => {
         </Link>
       </div>
 
-      {isLoading ? <ReadCardSkeleton /> : <ReadCard read={data} />}
+      <ReadCard read={data} />
     </div>
   )
 }
