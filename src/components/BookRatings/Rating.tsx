@@ -50,7 +50,7 @@ export const RatingSkeleton = () => {
   return (
     <div className="rounded-lg bg-gray-700 p-6">
       <div className="flex gap-4">
-        <div className="h-[40px] w-[40px] animate-pulse rounded-full bg-gray-600" />
+        <div className="aspect-square w-[40px] animate-pulse rounded-full bg-gray-600" />
 
         <div className="flex w-full justify-between">
           <div className="leading-5">

@@ -19,9 +19,10 @@ export const RatingForm = ({ onCancel, onSubmit }: RatingFormProps) => {
 
   const [rate, setRate] = useState(0)
   const [description, setDescription] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
+    async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
 
       const data: RatingData = {
@@ -29,7 +30,14 @@ export const RatingForm = ({ onCancel, onSubmit }: RatingFormProps) => {
         rate,
       }
 
-      onSubmit(data)
+      setIsSubmitting(true)
+
+      try {
+        await onSubmit(data)
+      } catch {
+      } finally {
+        setIsSubmitting(false)
+      }
     },
     [onSubmit, rate, description],
   )
@@ -94,7 +102,7 @@ export const RatingForm = ({ onCancel, onSubmit }: RatingFormProps) => {
 
         <button
           className="rounded-md bg-gray-600 p-2 disabled:cursor-not-allowed disabled:opacity-60"
-          disabled={rate === 0 || description === ''}
+          disabled={rate === 0 || description === '' || isSubmitting}
         >
           <Check className="fill-green-100" />
         </button>

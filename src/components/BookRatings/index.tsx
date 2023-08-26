@@ -105,7 +105,7 @@ export const BookRatings = ({ book }: BookRatingsProps) => {
               onSubmit={handleSubmitRating}
             />
           ) : (
-            <div className="hover: mt-4 flex w-full flex-col items-center justify-center gap-2 rounded-lg  border-2 border-gray-500 bg-gray-600 p-6 transition-all">
+            <div className="flex w-full flex-col items-center justify-center gap-2 rounded-lg bg-gray-600 p-6 transition-all">
               <Bookmark width={64} height={64} className="fill-gray-400" />
 
               <p className="text-sm text-gray-400">Não há nenhuma avaliação</p>
