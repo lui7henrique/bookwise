@@ -49,3 +49,28 @@ export const ReadCard = (props: ReadCardProps) => {
     </div>
   )
 }
+
+export const ReadCardSkeleton = () => {
+  return (
+    <div className="flex w-full gap-6 rounded-lg border-2 border-transparent bg-gray-600 p-6 transition-all hover:border-gray-500">
+      <div className="animate-pulse h-[152px] w-[108px] rounded-md bg-gray-700" />
+
+      <div className="flex w-full flex-col justify-between">
+        <div>
+          <div className="flex items-center justify-between">
+            <div className="animate-pulse h-[16px] w-[50%] rounded-md bg-gray-700" />
+          </div>
+
+          <div className="animate-pulse mt-3 h-[16px] w-[80%] rounded-md bg-gray-700" />
+
+          <div className="animate-pulse mt-1 h-[16px] w-[64px] rounded-md bg-gray-700" />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <div className="animate-pulse h-[14px] w-[100%] rounded-md bg-gray-700" />
+          <div className="animate-pulse h-[14px] w-[100%] rounded-md bg-gray-700" />
+        </div>
+      </div>
+    </div>
+  )
+}

@@ -21,6 +21,8 @@ export function PrismaAdapter(): Adapter {
         emailVerified: null,
       }
 
+      console.log({ formattedUser })
+
       return formattedUser
     },
 
@@ -156,6 +158,7 @@ export function PrismaAdapter(): Adapter {
           user: true,
         },
       })
+
       if (!prismaSession) {
         return null
       }

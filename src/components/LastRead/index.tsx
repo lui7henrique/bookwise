@@ -1,11 +1,14 @@
 import { CaretRight } from '@phosphor-icons/react'
 import Link from 'next/link'
-import { ReadCard } from '../ReadCard'
+import { ReadCard, ReadCardSkeleton } from '../ReadCard'
 import { useQuery } from 'react-query'
 import { api } from 'src/lib/api'
 
 export const LastRead = () => {
-  const { data } = useQuery(['last-read'], async () => await api.getLastRead())
+  const { data, isLoading } = useQuery(
+    ['last-read'],
+    async () => await api.getLastRead(),
+  )
 
   if (!data) {
     // TODO: SKELETON
@@ -25,7 +28,7 @@ export const LastRead = () => {
         </Link>
       </div>
 
-      <ReadCard read={data} />
+      {isLoading ? <ReadCardSkeleton /> : <ReadCard read={data} />}
     </div>
   )
 }
