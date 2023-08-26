@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import { api } from 'src/lib/api'
-import { BookCard } from '../BookCard'
+import { BookCard, BookCardSkeleton } from '../BookCard'
 import { Drawer } from '../Drawer'
 import { X } from '@phosphor-icons/react'
 import { FullBookCard } from '../FullBookCard'
@@ -11,14 +11,19 @@ type BooksProps = {
 }
 
 export const Books = ({ categories }: BooksProps) => {
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     ['books', categories],
     async () => await api.getBooks(categories),
   )
 
-  if (!data) {
-    // TODO: SKELETON
-    return <></>
+  if (isLoading || !data) {
+    return (
+      <div className="grid w-full grid-cols-3 gap-5">
+        {Array.from({ length: 10 }).map((_, index) => {
+          return <BookCardSkeleton key={index} />
+        })}
+      </div>
+    )
   }
 
   return (

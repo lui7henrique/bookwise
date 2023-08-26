@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import { api } from 'src/lib/api'
-import { Category } from './Category'
+import { Category, CategorySkeleton } from './Category'
 
 type CategoriesProps = {
   selectedCategories: string[]
@@ -11,13 +11,21 @@ type CategoriesProps = {
 export const Categories = (props: CategoriesProps) => {
   const { selectedCategories, onReset, onSelect } = props
 
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     ['categories'],
     async () => await api.getCategories(),
   )
 
-  if (!data) {
-    return
+  if (!data || isLoading) {
+    return (
+      <div className="flex flex-wrap gap-3">
+        {Array.from({
+          length: 10,
+        }).map((_, index) => {
+          return <CategorySkeleton key={index} />
+        })}
+      </div>
+    )
   }
 
   return (
