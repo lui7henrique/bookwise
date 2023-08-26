@@ -55,7 +55,9 @@ export const RatingCard = (props: RatingCardProps) => {
             <h6 className="mt-0 text-sm text-gray-400">{book.author}</h6>
           </div>
 
-          <p className="mt-5 text-sm text-gray-300">{description}</p>
+          <p className="mt-5 line-clamp-3 text-sm text-gray-300">
+            {description}
+          </p>
         </div>
       </div>
     </div>

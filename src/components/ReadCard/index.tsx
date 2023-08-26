@@ -44,7 +44,7 @@ export const ReadCard = (props: ReadCardProps) => {
           <h5 className="mt-0 text-sm text-gray-400">{book.author}</h5>
         </div>
 
-        <p className="mt-6 text-sm text-gray-300">{description}</p>
+        <p className="mt-6 line-clamp-3 text-sm text-gray-300">{description}</p>
       </div>
     </div>
   )
