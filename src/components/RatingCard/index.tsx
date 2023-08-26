@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { Star } from '@phosphor-icons/react'
 import { LatestRating } from 'src/lib/api'
 import { formatThumbnail } from 'src/utils/formatThumbnail'
 import { RatingStars } from '../RatingStars'

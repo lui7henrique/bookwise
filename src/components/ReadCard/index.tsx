@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Image from 'next/image'
 import { Read } from 'src/lib/api'
 import { RatingStars } from '../RatingStars'
@@ -58,7 +59,7 @@ export const ReadCardSkeleton = () => {
       <div className="flex w-full flex-col justify-between">
         <div>
           <div className="flex items-center justify-between">
-            <div className="              h-[16px] w-[50%] rounded-md bg-gray-700  animate-pulse" />
+            <div className="h-[16px] w-[50%] rounded-md bg-gray-700  animate-pulse" />
           </div>
 
           <div className="animate-pulse mt-3 h-[16px] w-[80%] rounded-md bg-gray-700" />
