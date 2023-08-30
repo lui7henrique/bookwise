@@ -4,6 +4,7 @@ import { Layout } from 'src/components/Layout'
 import { Categories } from 'src/components/Categories'
 import { useCallback, useState } from 'react'
 import { Books } from 'src/components/Books'
+import Head from 'next/head'
 
 export default function Explore() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
@@ -26,25 +27,31 @@ export default function Explore() {
   )
 
   return (
-    <Layout.Root>
-      <Layout.Sidebar />
+    <>
+      <Head>
+        <title>BookWise | Explorar</title>
+      </Head>
 
-      <Layout.Container>
-        <Layout.Header>
-          <Layout.HeaderIcon icon={Binoculars} />
-          <Layout.HeaderTitle>Explorar</Layout.HeaderTitle>
-        </Layout.Header>
+      <Layout.Root>
+        <Layout.Sidebar />
 
-        <div className="flex flex-col gap-16">
-          <Categories
-            selectedCategories={selectedCategories}
-            onReset={handleResetCategories}
-            onSelect={handleSelectCategory}
-          />
+        <Layout.Container>
+          <Layout.Header>
+            <Layout.HeaderIcon icon={Binoculars} />
+            <Layout.HeaderTitle>Explorar</Layout.HeaderTitle>
+          </Layout.Header>
 
-          <Books categories={selectedCategories} />
-        </div>
-      </Layout.Container>
-    </Layout.Root>
+          <div className="flex flex-col gap-16">
+            <Categories
+              selectedCategories={selectedCategories}
+              onReset={handleResetCategories}
+              onSelect={handleSelectCategory}
+            />
+
+            <Books categories={selectedCategories} />
+          </div>
+        </Layout.Container>
+      </Layout.Root>
+    </>
   )
 }

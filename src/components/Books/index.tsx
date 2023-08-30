@@ -18,7 +18,7 @@ export const Books = ({ categories }: BooksProps) => {
 
   if (isLoading || !data) {
     return (
-      <div className="grid w-full grid-cols-3 gap-5">
+      <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {Array.from({ length: 10 }).map((_, index) => {
           return <BookCardSkeleton key={index} />
         })}
@@ -27,13 +27,13 @@ export const Books = ({ categories }: BooksProps) => {
   }
 
   return (
-    <div className="grid w-full grid-cols-3 gap-5">
+    <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
       {data?.map((book) => {
         return (
           <Drawer.Root key={book.id}>
             <Drawer.Trigger>
               <div>
-                <BookCard book={book} />
+                <BookCard book={book} pointer />
               </div>
             </Drawer.Trigger>
 
@@ -41,7 +41,7 @@ export const Books = ({ categories }: BooksProps) => {
               <Drawer.Overlay />
 
               <Drawer.Content>
-                <div className="max-h-screen overflow-y-scroll px-12 py-6">
+                <div className="max-h-screen overflow-y-scroll px-6 py-6 lg:px-12">
                   <div className="flex w-full justify-end">
                     <Drawer.Close>
                       <X width={24} height={24} />

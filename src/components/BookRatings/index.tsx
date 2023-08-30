@@ -2,18 +2,21 @@ import { useQuery } from 'react-query'
 import { Book, api } from 'src/lib/api'
 import { useSession } from 'next-auth/react'
 import { SocialModal } from '../SocialModal'
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { RatingData, RatingForm } from '../RatingForm'
 import { queryClient } from 'src/pages/_app'
 import { Rating, RatingSkeleton } from './Rating'
 import { Bookmark } from '@phosphor-icons/react'
+import { lastReadQueryKey } from '../LastRead'
+import { mostRecentRatingsQueryKey } from '../MostRecentViews'
+import { popularBooksQueryKey } from '../PopularBooks'
 
 type BookRatingsProps = {
   book: Book
 }
 
 export const BookRatings = ({ book }: BookRatingsProps) => {
-  const queryKey = [book.id]
+  const queryKey = useMemo(() => [book.id], [book])
 
   const { data, isLoading } = useQuery(
     queryKey,
@@ -34,9 +37,12 @@ export const BookRatings = ({ book }: BookRatingsProps) => {
     async (data: RatingData) => {
       try {
         await api.createBookRating(book.id, data)
-        queryClient.invalidateQueries(queryKey)
 
-        queryClient.invalidateQueries(['last-read'])
+        queryClient.invalidateQueries(queryKey)
+        queryClient.invalidateQueries(lastReadQueryKey)
+        queryClient.invalidateQueries(mostRecentRatingsQueryKey)
+        queryClient.invalidateQueries(popularBooksQueryKey)
+        queryClient.invalidateQueries(['books'])
       } catch {
         // TODO: HANDLE ERRORS
         console.error('usuário já fez o review')

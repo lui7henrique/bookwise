@@ -24,8 +24,8 @@ export const FullBookCard = (props: FullBookCardProps) => {
 
   return (
     <section className="mt-4 rounded-[10px] bg-gray-700 px-8 py-6 ">
-      <div className="flex w-full gap-8">
-        <div className="relative aspect-[6/9] w-[40%]">
+      <div className="flex w-full flex-col gap-4 md:flex-row lg:gap-8">
+        <div className="relative aspect-[6/9] w-full md:w-[40%]">
           <Image
             src={thumbnail}
             alt=""
@@ -35,7 +35,7 @@ export const FullBookCard = (props: FullBookCardProps) => {
           />
         </div>
 
-        <div className="flex w-[60%] flex-col items-start justify-between">
+        <div className="flex w-full flex-col items-start justify-between gap-4 md:w-[60%] md:gap-0">
           <div>
             <h4 className="text-lg font-bold leading-6 text-gray-100">
               {name}
@@ -74,7 +74,7 @@ export const FullBookCard = (props: FullBookCardProps) => {
         </div>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 border-t border-gray-600 py-6">
+      <div className="mt-10 grid gap-4 border-t border-gray-600 py-6 md:grid-cols-2">
         <div className="w-100 flex items-center gap-4">
           <BookmarkSimple className="fill-green-100" width={24} height={24} />
 

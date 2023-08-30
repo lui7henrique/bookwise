@@ -1,5 +1,4 @@
 import colors from 'tailwindcss/colors'
-import { animation } from 'tailwindcss/defaultTheme'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

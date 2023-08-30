@@ -4,9 +4,11 @@ import { api } from 'src/lib/api'
 import Link from 'next/link'
 import { BookBookmark } from '@phosphor-icons/react'
 
+export const mostRecentRatingsQueryKey = ['most-recent-ratings']
+
 export const MostRecentRatings = () => {
   const { data, isLoading } = useQuery(
-    ['most-recent-ratings'],
+    mostRecentRatingsQueryKey,
     async () => await api.getLatestRatings(),
   )
 
@@ -24,7 +26,7 @@ export const MostRecentRatings = () => {
     )
   }
 
-  if (!data) {
+  if (!data?.length) {
     return (
       <div>
         <h3>Avaliações mais recentes</h3>

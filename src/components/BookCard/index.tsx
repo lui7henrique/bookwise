@@ -3,14 +3,26 @@ import { Book } from 'src/lib/api'
 import { ComponentProps } from 'react'
 import { RatingStars } from '../RatingStars'
 import { formatThumbnail } from 'src/utils/formatThumbnail'
+import { tv } from 'tailwind-variants'
 
 type BookCardProps = {
   book: Book
+  pointer?: boolean
 } & ComponentProps<'div'>
+
+const bookCard = tv({
+  base: 'flex w-full gap-5 rounded-lg border-2 border-transparent bg-gray-700 px-5 py-[18px]',
+  variants: {
+    pointer: {
+      true: 'cursor-pointer hover:border-gray-600 transition-all',
+    },
+  },
+})
 
 export const BookCard = (props: BookCardProps) => {
   const {
     book: { cover_url: cover, name, author, ratingsAverage },
+    pointer,
     ...divProps
   } = props
 
@@ -18,7 +30,9 @@ export const BookCard = (props: BookCardProps) => {
 
   return (
     <div
-      className="flex w-full cursor-pointer gap-5 rounded-lg border-2 border-transparent bg-gray-700 px-5 py-[18px] transition-all hover:border-gray-600"
+      className={bookCard({
+        pointer,
+      })}
       {...divProps}
     >
       <div className="relative aspect-[6/9] w-[40%]">
@@ -45,7 +59,7 @@ export const BookCard = (props: BookCardProps) => {
 
 export const BookCardSkeleton = () => {
   return (
-    <div className="flex w-full cursor-pointer gap-5 rounded-lg  bg-gray-700 px-5 py-[18px] transition-all">
+    <div className="flex w-full gap-5 rounded-lg  bg-gray-700 px-5 py-[18px] transition-all">
       <div className="aspect-[6/9] w-[40%] animate-pulse rounded-md bg-gray-600" />
 
       <div className="flex w-[60%] flex-col items-start justify-between">

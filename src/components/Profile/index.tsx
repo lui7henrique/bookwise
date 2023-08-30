@@ -72,7 +72,7 @@ export const Profile = () => {
         />
         <ProfileItem
           icon={Bookmark}
-          value={mainCategory}
+          value={mainCategory === 'undefined' ? '?' : mainCategory}
           label="Categoria mais lida"
         />
       </div>

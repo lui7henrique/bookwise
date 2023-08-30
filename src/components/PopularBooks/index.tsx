@@ -4,9 +4,11 @@ import { useQuery } from 'react-query'
 import { BookCard, BookCardSkeleton } from '../BookCard'
 import { api } from 'src/lib/api'
 
+export const popularBooksQueryKey = ['popular-books']
+
 export const PopularBooks = () => {
   const { data, isLoading } = useQuery(
-    ['books'],
+    popularBooksQueryKey,
     async () => await api.getBooks([]),
   )
 

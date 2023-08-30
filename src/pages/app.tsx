@@ -4,29 +4,36 @@ import { LastRead } from 'src/components/LastRead'
 import { MostRecentRatings } from 'src/components/MostRecentViews'
 import { PopularBooks } from 'src/components/PopularBooks'
 import { Layout } from 'src/components/Layout'
+import Head from 'next/head'
 
 export default function App() {
   return (
-    <Layout.Root>
-      <Layout.Sidebar />
+    <>
+      <Head>
+        <title>BookWise | Início</title>
+      </Head>
 
-      <Layout.Container>
-        <Layout.Header>
-          <Layout.HeaderIcon icon={TrendUp} />
-          <Layout.HeaderTitle>Início</Layout.HeaderTitle>
-        </Layout.Header>
+      <Layout.Root>
+        <Layout.Sidebar />
 
-        <div className="flex gap-16">
-          <div className="flex w-full max-w-[560px] flex-col gap-10">
-            <LastRead />
-            <MostRecentRatings />
+        <Layout.Container>
+          <Layout.Header>
+            <Layout.HeaderIcon icon={TrendUp} />
+            <Layout.HeaderTitle>Início</Layout.HeaderTitle>
+          </Layout.Header>
+
+          <div className="flex flex-col gap-16 xl:flex-row">
+            <div className="flex w-full flex-col gap-10 xl:max-w-[560px]">
+              <LastRead />
+              <MostRecentRatings />
+            </div>
+
+            <div className="w-full xl:max-w-[324px]">
+              <PopularBooks />
+            </div>
           </div>
-
-          <div className="w-full max-w-[324px]">
-            <PopularBooks />
-          </div>
-        </div>
-      </Layout.Container>
-    </Layout.Root>
+        </Layout.Container>
+      </Layout.Root>
+    </>
   )
 }
