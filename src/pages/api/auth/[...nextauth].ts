@@ -51,9 +51,6 @@ export function buildNextAuthOptions(): NextAuthOptions {
         }
       },
     },
-    session: {
-      strategy: 'database',
-    },
     pages: {
       signIn: '/login',
     },
