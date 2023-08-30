@@ -10,7 +10,6 @@ export function buildNextAuthOptions(): NextAuthOptions {
     adapter: PrismaAdapter(),
     providers: [
       GoogleProvider({
-        // Linkagem das Contas com o mesmo email ao usar Provedores diferentes (allowDangerousEmailAccountLink) https://next-auth.js.org/configuration/providers/oauth#allowdangerousemailaccountlinking-option //
         allowDangerousEmailAccountLinking: true,
         clientId: process.env.GOOGLE_CLIENT_ID ?? '',
         clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
