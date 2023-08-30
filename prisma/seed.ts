@@ -8,6 +8,7 @@ const load = async () => {
   try {
     await prisma.rating.deleteMany()
     await prisma.user.deleteMany()
+    await prisma.session.deleteMany()
     await prisma.categoriesOnBooks.deleteMany()
     await prisma.category.deleteMany()
     await prisma.book.deleteMany()
