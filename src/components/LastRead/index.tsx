@@ -10,17 +10,21 @@ type ContainerProps = {
   children: ReactNode
 }
 const Container = (props: ContainerProps) => {
+  const { status } = useSession()
+
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
         <h3 className="text-gray-100">Sua última leitura</h3>
 
-        <Link
-          className="flex items-center gap-2 text-purple-100"
-          href="/profile"
-        >
-          Ver todas <CaretRight className="fill-purple-100" weight="bold" />
-        </Link>
+        {status === 'authenticated' && (
+          <Link
+            className="flex items-center gap-2 text-purple-100"
+            href="/profile"
+          >
+            Ver todas <CaretRight className="fill-purple-100" weight="bold" />
+          </Link>
+        )}
       </div>
 
       {props.children}
@@ -69,7 +73,7 @@ export const LastRead = () => {
           <div className="hover: flex w-full cursor-pointer flex-col  items-center justify-center gap-2 rounded-lg border-2  border-gray-500 bg-gray-600 p-6 transition-all">
             <Book width={64} height={64} className="fill-gray-400" />
 
-            <p className="text-sm text-gray-400">
+            <p className="text-center text-sm text-gray-400">
               Nenhum livro foi lido recentemente
             </p>
           </div>

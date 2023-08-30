@@ -38,7 +38,9 @@ export const ReadCard = (props: ReadCardProps) => {
               })}
             </span>
 
-            <RatingStars ratingAverage={rate} />
+            <div className="hidden sm:flex">
+              <RatingStars ratingAverage={rate} />
+            </div>
           </div>
 
           <h4 className="mt-3 font-bold text-gray-100">{book.name}</h4>

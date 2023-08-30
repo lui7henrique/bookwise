@@ -35,7 +35,9 @@ export const RatingCard = (props: RatingCardProps) => {
           </div>
         </div>
 
-        <RatingStars ratingAverage={rate} />
+        <div className="hidden sm:flex">
+          <RatingStars ratingAverage={rate} />
+        </div>
       </div>
 
       <div className="flex gap-5">

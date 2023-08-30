@@ -22,13 +22,13 @@ export default function App() {
             <Layout.HeaderTitle>Início</Layout.HeaderTitle>
           </Layout.Header>
 
-          <div className="flex flex-col gap-16 xl:flex-row">
-            <div className="flex w-full flex-col gap-10 xl:max-w-[560px]">
+          <div className="flex flex-col gap-16 lg:flex-row">
+            <div className="flex w-full flex-col gap-10 lg:max-w-[560px]">
               <LastRead />
               <MostRecentRatings />
             </div>
 
-            <div className="w-full xl:max-w-[324px]">
+            <div className="w-full lg:max-w-[324px]">
               <PopularBooks />
             </div>
           </div>

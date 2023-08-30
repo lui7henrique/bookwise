@@ -1,4 +1,6 @@
 import { User } from '@phosphor-icons/react'
+import { GetServerSideProps } from 'next'
+import { getSession } from 'next-auth/react'
 import Head from 'next/head'
 
 import { Layout } from 'src/components/Layout'
@@ -21,12 +23,12 @@ export default function ProfilePage() {
             <Layout.HeaderTitle>Perfil</Layout.HeaderTitle>
           </Layout.Header>
 
-          <div className="flex gap-16">
+          <div className="flex flex-col-reverse gap-8 sm:flex-row sm:gap-16">
             <div className="flex w-full max-w-[560px] flex-col gap-10">
               <ProfileBooks />
             </div>
 
-            <div className=" w-full max-w-[324px]  ">
+            <div className="w-full sm:max-w-[324px]">
               <Profile />
             </div>
           </div>
@@ -34,4 +36,21 @@ export default function ProfilePage() {
       </Layout.Root>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
 }

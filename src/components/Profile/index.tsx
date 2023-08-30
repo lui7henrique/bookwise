@@ -46,7 +46,7 @@ export const Profile = () => {
   const mainCategory = getMainCategory(profile)
 
   return (
-    <div className="flex w-full flex-col items-center border-l border-gray-700">
+    <div className="flex w-full flex-col border-l border-transparent sm:items-center sm:border-gray-700">
       <figure className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-gradient-vertical">
         <Image
           src={data.user.avatar_url}

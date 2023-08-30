@@ -35,7 +35,7 @@ export const ProfileBooks = () => {
   )
 
   return (
-    <>
+    <div>
       <ProfileBooksInput
         onChange={(e) => setQuery(e.target.value)}
         value={query}
@@ -46,6 +46,6 @@ export const ProfileBooks = () => {
           return <ProfileCard rating={rating} key={rating.id} />
         })}
       </div>
-    </>
+    </div>
   )
 }
