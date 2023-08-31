@@ -5,6 +5,8 @@
 
 Book Wise is a platform dedicated to book lovers, where you can access an extensive collection of books from different genres that have been previously cataloged. Additionally, you also have the opportunity to contribute your own reviews after logging into the application using your Google or GitHub accounts.
 
+![Project cover](https://raw.githubusercontent.com/lui7henrique/bookwise/main/Cover.jpg)
+
 ## Features
 - [x] Social authentication with Google and GitHub
 - [x] Listing of books with category filters
