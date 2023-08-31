@@ -78,6 +78,6 @@ Antes de começar, você precisará ter as seguintes ferramentas instaladas em s
 
 ## Author
 
-Luiz Henrique
+Luiz Henrique - Software Engineer
 
 [Linkedin](https://www.linkedin.com/in/luiz-henrique7/) | [E-mail](mailto:7henrique18@gmail.com)
