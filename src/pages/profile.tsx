@@ -1,13 +1,20 @@
 import { User } from '@phosphor-icons/react'
-import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import { Layout } from 'src/components/Layout'
 import { Profile } from 'src/components/Profile'
 import { ProfileBooks } from 'src/components/ProfileBooks'
 
 export default function ProfilePage() {
+  const { status } = useSession()
+  const { push } = useRouter()
+
+  if (status === 'unauthenticated') {
+    return push('/login')
+  }
+
   return (
     <>
       <Head>
@@ -36,21 +43,4 @@ export default function ProfilePage() {
       </Layout.Root>
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context)
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    }
-  }
-
-  return {
-    props: {},
-  }
 }
