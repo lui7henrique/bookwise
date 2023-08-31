@@ -8,6 +8,7 @@ export default async function handler(
   if (req.method !== 'GET') return res.status(405).end()
 
   const userId = String(req.query.user_id)
+  console.log({ userId })
 
   const profile = await prisma.user.findUnique({
     where: {

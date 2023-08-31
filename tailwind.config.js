@@ -43,6 +43,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'gradient-vertical': `linear-gradient(180deg, #7FD1CC 0%, #9694F5 100%)`,
         'gradient-horizontal': `linear-gradient(90deg, #7FD1CC 0%, #9694F5 100%)`,
+        'gradient-horizontal-2': `linear-gradient(90deg, #7FD1CC 0%, #9694F5 100%)`,
       },
       keyframes: {
         overlayShow: {

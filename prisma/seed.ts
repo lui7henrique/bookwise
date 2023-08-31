@@ -6,6 +6,7 @@ const prisma = new PrismaClient()
 
 const load = async () => {
   try {
+    await prisma.account.deleteMany()
     await prisma.rating.deleteMany()
     await prisma.categoriesOnBooks.deleteMany()
     await prisma.category.deleteMany()

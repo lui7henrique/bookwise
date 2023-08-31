@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/react'
 import { SignInButton } from './SignInButton'
 import { ProfileButton } from './ProfileButton'
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const { status } = useSession()
   const { asPath } = useRouter()
 
@@ -90,5 +90,3 @@ const Sidebar = () => {
     </aside>
   )
 }
-
-export default Sidebar
