@@ -1,67 +1,76 @@
-# BookWise 
 
-Plataforma Full-Stack de Avaliação de Livros
+<div align="center">
 
-Sobre • Recursos • Layout • Como Funciona • Pilha Tecnológica • Autor
+# BookWise
 
-## Sobre
-O Book Wise é uma plataforma dedicada a amantes de livros, onde você pode acessar uma vasta coleção de livros de diferentes gêneros previamente cadastrados. Além disso, você também tem a oportunidade de contribuir com suas próprias avaliações após fazer login na aplicação usando suas contas do Google ou GitHub.
+Full-Stack Book Rating Platform
+
+[About](#about) • [Features](#features) • [Layout](#layout) • [Running the App](#running-the-app) • [Technologies](#technologies) • [Author](#author)
+
+</div>
+
+## About
+Book Wise is a platform dedicated to book lovers, where you can access an extensive collection of books from different genres that have been previously cataloged. Additionally, you also have the opportunity to contribute your own reviews after logging into the application using your Google or GitHub accounts.
 
 ## Features
-- Autenticação social com Google e GitHub
-- Listagem de livros com filtros por categorias
-- Avaliações e comentários sobre livros
-- Pesquisa por nomes de livros.
+- [x] Social authentication with Google and GitHub
+- [x] Listing of books with category filters
+- [x] Book reviews and comments
+- [x] Search by book names.
 
 ## Layout
-O layout da aplicação está disponível no Figma:
-[Link para o Layout no Figma](https://www.figma.com/file/VzEy348nnGTa5T0EmYDNZR/BookWise--%E2%80%A2-Desafio-React-(Copy)?type=design&node-id=1%3A17&mode=design&t=AbwxZ45cmC4VrU32-1)
+The application's layout is available on Figma:
 
-## Como Funciona
-### Pré-requisitos
-Antes de começar, você precisará ter as seguintes ferramentas instaladas em sua máquina: Git, Node.js e Docker para executar um contêiner com o MySQL. Além disso, é bom ter um editor de código como o VSCode para trabalhar com o código.
+[Figma Layout](https://www.figma.com/file/VzEy348nnGTa5T0EmYDNZR/BookWise--%E2%80%A2-Desafio-React-(Copy)?type=design&node-id=1%3A17&mode=design&t=AbwxZ45cmC4VrU32-1)
 
-### Executando o App
-1. Crie um arquivo `.env` para adicionar as variáveis de ambiente. Deve se parecer com isso:
+Certainly, here are the three steps to run the app:
 
+## Running the App
+
+1. Clone the project and install the dependencies:
+
+   ```shell
+   # Clone this repository
+   $ git clone https://github.com/Artur-Poffo/Book-Wise-Ignite.git
+
+   # Navigate to the project folder via the terminal
+   $ cd Book-Wise-Ignite
+
+   # Install dependencies
+   $ npm install
    ```
-   # URL do banco de dados local do MySQL
+
+2. Create a `.env` file to add environment variables. It should look like this:
+
+   ```shell
+   # Local MySQL database URL
    DATABASE_URL='mysql://.....'
 
-   # Configurações do NextAuth e provedores
+   # NextAuth configurations and providers
 
-   # URL do projeto
+   # Project URL
    NEXTAUTH_URL="http://localhost:3000"
-   # String aleatória
+   # Random string
    NEXTAUTH_SECRET="dawodkiwdjufdkjnfueisfhisjfhsieuhyfhyfthfdgr"
 
-   # Siga as etapas na documentação do NextAuth para configurar os provedores.
+   # Follow the steps in the NextAuth documentation to configure the providers.
 
-   # Provedor Google
+   # Google Provider
    GOOGLE_CLIENT_ID="................"
    GOOGLE_CLIENT_SECRET=".............."
 
-   # Configurações do Provedor GitHub
+   # GitHub Provider Configurations
    GITHUB_CLIENT_ID="..................."
    GITHUB_CLIENT_SECRET="................."
    ```
 
-2. Agora execute o projeto...
+3. Now, start the application:
 
-   ```
-   # Clone este repositório
-   $ git clone https://github.com/Artur-Poffo/Book-Wise-Ignite.git
-
-   # Acesse a pasta do projeto via terminal
-   $ cd Book-Wise-Ignite
-
-   # Instale as dependências
-   $ npm install
-
-   # Inicie a aplicação no modo de desenvolvimento
+   ```shell
+   # Start the application in development mode
    $ npm run dev
 
-   # O servidor iniciará na porta: 3000 - acesse http://localhost:3000
+   # The server will start on port: 3000 - access http://localhost:3000
    ```
 
 ## Technologies
