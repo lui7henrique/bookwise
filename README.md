@@ -1,16 +1,8 @@
 
-<div align="center">
-
-# BookWise ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) ![Build Passing](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
 
-Full-Stack Book Rating Platform 
+## BookWise  ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) ![Build Passing](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
-[About](#about) • [Features](#features) • [Layout](#layout) • [Running the App](#running-the-app) • [Technologies](#technologies) • [Author](#author)
-
-</div>
-
-## About
 Book Wise is a platform dedicated to book lovers, where you can access an extensive collection of books from different genres that have been previously cataloged. Additionally, you also have the opportunity to contribute your own reviews after logging into the application using your Google or GitHub accounts.
 
 ## Features
