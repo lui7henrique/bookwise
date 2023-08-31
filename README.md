@@ -1,9 +1,10 @@
 
 <div align="center">
 
-# BookWise
+# BookWise ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) ![Build Passing](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
-Full-Stack Book Rating Platform
+
+Full-Stack Book Rating Platform 
 
 [About](#about) • [Features](#features) • [Layout](#layout) • [Running the App](#running-the-app) • [Technologies](#technologies) • [Author](#author)
 
@@ -16,7 +17,7 @@ Book Wise is a platform dedicated to book lovers, where you can access an extens
 - [x] Social authentication with Google and GitHub
 - [x] Listing of books with category filters
 - [x] Book reviews and comments
-- [x] Search by book names.
+- [x] Search by book names
 
 ## Layout
 The application's layout is available on Figma:
