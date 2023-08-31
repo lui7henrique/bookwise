@@ -66,15 +66,19 @@ Antes de começar, você precisará ter as seguintes ferramentas instaladas em s
 
 ## Technologies
 
-- Next.js
-- TypeScript
-- Prisma ORM
-- Axios
-- @phosphor-icons
-- radix-ui
-- TailwindCSS
-- react-query
-- NextAuth
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [Prisma](https://www.prisma.io/)
+- [React Query](https://react-query.tanstack.com/)
+- [Axios](https://axios-http.com/)
+- [Zod](https://github.com/colinhacks/zod)
+- [date-fns](https://date-fns.org/)
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Tailwind Variants](https://github.com/benface/tailwindcss-variants)
+- [@phosphor-icons/react](https://phosphoricons.com/)
 
 ## Author
 
