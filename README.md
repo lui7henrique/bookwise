@@ -16,28 +16,41 @@ The application's layout is available on Figma:
 
 [Figma Layout](https://www.figma.com/file/VzEy348nnGTa5T0EmYDNZR/BookWise--%E2%80%A2-Desafio-React-(Copy)?type=design&node-id=1%3A17&mode=design&t=AbwxZ45cmC4VrU32-1)
 
-Certainly, here are the three steps to run the app:
-
 ## Running the App
 
-1. Clone the project and install the dependencies:
+Claro, aqui está o passo a passo atualizado com a criação do contêiner MySQL como o primeiro passo:
+
+### Running the App
+
+Before you start running the app, make sure you have Docker installed and running on your system. If you don't have Docker installed, you can follow the installation instructions for your operating system on the [Docker website](https://docs.docker.com/get-docker/).
+
+1. Create and start a MySQL Docker container:
+
+   ```shell
+   # Create and start a MySQL container
+   $ docker run --name my-mysql-container -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mysql:latest
+   ```
+
+   This command will create a MySQL container named `my-mysql-container` with the specified root password (`my-secret-pw`). It will expose port `3306` for database connections.
+
+2. Clone the project and install the dependencies:
 
    ```shell
    # Clone this repository
-   $ git clone https://github.com/Artur-Poffo/Book-Wise-Ignite.git
+   $ git clone https://github.com/lui7henrique/bookwise.git
 
    # Navigate to the project folder via the terminal
-   $ cd Book-Wise-Ignite
+   $ cd bookwise
 
    # Install dependencies
    $ npm install
    ```
 
-2. Create a `.env` file to add environment variables. It should look like this:
+3. Create a `.env` file to add environment variables. It should look like this:
 
    ```shell
    # Local MySQL database URL
-   DATABASE_URL='mysql://.....'
+   DATABASE_URL='mysql://root:my-secret-pw@localhost:3306/your-database-name'
 
    # NextAuth configurations and providers
 
@@ -57,7 +70,9 @@ Certainly, here are the three steps to run the app:
    GITHUB_CLIENT_SECRET="................."
    ```
 
-3. Now, start the application:
+   Make sure to replace `your-database-name` with the name of the database you want to use and configure the other environment variables accordingly.
+
+4. Now, start the application:
 
    ```shell
    # Start the application in development mode
@@ -65,6 +80,8 @@ Certainly, here are the three steps to run the app:
 
    # The server will start on port: 3000 - access http://localhost:3000
    ```
+
+Make sure to have Docker running and the MySQL container created before you proceed with starting the application.
 
 ## Technologies
 
