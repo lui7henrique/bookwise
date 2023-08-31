@@ -64,8 +64,7 @@ Antes de começar, você precisará ter as seguintes ferramentas instaladas em s
    # O servidor iniciará na porta: 3000 - acesse http://localhost:3000
    ```
 
-## Pilha Tecnológica
-As seguintes ferramentas foram utilizadas na construção do projeto:
+## Technologies
 
 - Next.js
 - TypeScript
@@ -73,13 +72,12 @@ As seguintes ferramentas foram utilizadas na construção do projeto:
 - Axios
 - @phosphor-icons
 - radix-ui
-- stitches
+- TailwindCSS
 - react-query
 - NextAuth
-- Zod
-Consulte o arquivo `package.json` para mais detalhes.
 
-## Autor
+## Author
 
 Luiz Henrique
+
 [Linkedin](https://www.linkedin.com/in/luiz-henrique7/) | [E-mail](mailto:7henrique18@gmail.com)
