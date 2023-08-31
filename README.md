@@ -1,38 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BookWise 
 
-## Getting Started
+Plataforma Full-Stack de Avaliação de Livros
 
-First, run the development server:
+Sobre • Recursos • Layout • Como Funciona • Pilha Tecnológica • Autor
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Sobre
+O Book Wise é uma plataforma dedicada a amantes de livros, onde você pode acessar uma vasta coleção de livros de diferentes gêneros previamente cadastrados. Além disso, você também tem a oportunidade de contribuir com suas próprias avaliações após fazer login na aplicação usando suas contas do Google ou GitHub.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
+- Autenticação social com Google e GitHub
+- Listagem de livros com filtros por categorias
+- Avaliações e comentários sobre livros
+- Pesquisa por nomes de livros.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Layout
+O layout da aplicação está disponível no Figma:
+[Link para o Layout no Figma](https://www.figma.com/file/VzEy348nnGTa5T0EmYDNZR/BookWise--%E2%80%A2-Desafio-React-(Copy)?type=design&node-id=1%3A17&mode=design&t=AbwxZ45cmC4VrU32-1)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Como Funciona
+### Pré-requisitos
+Antes de começar, você precisará ter as seguintes ferramentas instaladas em sua máquina: Git, Node.js e Docker para executar um contêiner com o MySQL. Além disso, é bom ter um editor de código como o VSCode para trabalhar com o código.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Executando o App
+1. Crie um arquivo `.env` para adicionar as variáveis de ambiente. Deve se parecer com isso:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```
+   # URL do banco de dados local do MySQL
+   DATABASE_URL='mysql://.....'
 
-## Learn More
+   # Configurações do NextAuth e provedores
 
-To learn more about Next.js, take a look at the following resources:
+   # URL do projeto
+   NEXTAUTH_URL="http://localhost:3000"
+   # String aleatória
+   NEXTAUTH_SECRET="dawodkiwdjufdkjnfueisfhisjfhsieuhyfhyfthfdgr"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   # Siga as etapas na documentação do NextAuth para configurar os provedores.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   # Provedor Google
+   GOOGLE_CLIENT_ID="................"
+   GOOGLE_CLIENT_SECRET=".............."
 
-## Deploy on Vercel
+   # Configurações do Provedor GitHub
+   GITHUB_CLIENT_ID="..................."
+   GITHUB_CLIENT_SECRET="................."
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Agora execute o projeto...
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```
+   # Clone este repositório
+   $ git clone https://github.com/Artur-Poffo/Book-Wise-Ignite.git
+
+   # Acesse a pasta do projeto via terminal
+   $ cd Book-Wise-Ignite
+
+   # Instale as dependências
+   $ npm install
+
+   # Inicie a aplicação no modo de desenvolvimento
+   $ npm run dev
+
+   # O servidor iniciará na porta: 3000 - acesse http://localhost:3000
+   ```
+
+## Pilha Tecnológica
+As seguintes ferramentas foram utilizadas na construção do projeto:
+
+- Next.js
+- TypeScript
+- Prisma ORM
+- Axios
+- @phosphor-icons
+- radix-ui
+- stitches
+- react-query
+- NextAuth
+- Zod
+Consulte o arquivo `package.json` para mais detalhes.
+
+## Autor
+
+Luiz Henrique
+[Linkedin](https://www.linkedin.com/in/luiz-henrique7/) | [E-mail](mailto:7henrique18@gmail.com)
