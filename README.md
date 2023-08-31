@@ -16,10 +16,6 @@ The application's layout is available on Figma:
 
 [Figma Layout](https://www.figma.com/file/VzEy348nnGTa5T0EmYDNZR/BookWise--%E2%80%A2-Desafio-React-(Copy)?type=design&node-id=1%3A17&mode=design&t=AbwxZ45cmC4VrU32-1)
 
-## Running the App
-
-Claro, aqui está o passo a passo atualizado com a criação do contêiner MySQL como o primeiro passo:
-
 ### Running the App
 
 Before you start running the app, make sure you have Docker installed and running on your system. If you don't have Docker installed, you can follow the installation instructions for your operating system on the [Docker website](https://docs.docker.com/get-docker/).
