@@ -12,33 +12,27 @@ export const Sidebar = () => {
   const { status } = useSession()
   const { asPath } = useRouter()
 
-  const publicNavigation = useMemo(
-    () => [
-      {
-        icon: TrendUp,
-        label: 'Início',
-        href: '/app',
-      },
-      {
-        icon: Binoculars,
-        label: 'Explorar',
-        href: '/explore',
-      },
-    ],
-    [],
-  )
+  const publicNavigation = [
+    {
+      icon: TrendUp,
+      label: 'Início',
+      href: '/app',
+    },
+    {
+      icon: Binoculars,
+      label: 'Explorar',
+      href: '/explore',
+    },
+  ]
 
-  const privateNavigation = useMemo(
-    () => [
-      ...publicNavigation,
-      {
-        icon: User,
-        label: 'Perfil',
-        href: '/profile',
-      },
-    ],
-    [publicNavigation],
-  )
+  const privateNavigation = [
+    ...publicNavigation,
+    {
+      icon: User,
+      label: 'Perfil',
+      href: '/profile',
+    },
+  ]
 
   const navigation =
     status === 'authenticated' ? privateNavigation : publicNavigation
