@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const { push } = useRouter()
 
   if (status === 'unauthenticated') {
-    return push('/login')
+    push('/login')
   }
 
   return (
