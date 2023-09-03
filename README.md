@@ -79,8 +79,6 @@ Before you start running the app, make sure you have Docker installed and runnin
    # The server will start on port: 3000 - access http://localhost:3000
    ```
 
-Make sure to have Docker running and the MySQL container created before you proceed with starting the application.
-
 ## Technologies
 
 - [Next.js](https://nextjs.org/)
